@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Video } from './models/videos';
+import { Video } from './models';
 import { Store } from '@ngrx/store';
 
 import * as fromRoot from './store/reducers';

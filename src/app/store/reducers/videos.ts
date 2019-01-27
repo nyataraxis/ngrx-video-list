@@ -1,6 +1,6 @@
 import * as videoAction from '../actions/videos';
 
-import { Video } from '../../models/videos';
+import { Video } from '../../models';
 
 export interface State {
     ids: number[];

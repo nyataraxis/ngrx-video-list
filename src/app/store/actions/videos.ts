@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Video } from '../../models/videos';
+import { Video } from '../../models/video';
 
 export const SELECT = '[Videos] Select';
 export const ADD_ONE = '[Videos] Add One';
