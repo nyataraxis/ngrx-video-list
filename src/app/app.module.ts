@@ -14,12 +14,12 @@ import { reducers, metaReducers } from './store/reducers/index';
     AppComponent,
     VideoListComponent,
     VideoItemComponent,
-    VideoSelectedComponent,
-    StoreModule.forRoot(reducers, {metaReducers})
+    VideoSelectedComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(reducers, {metaReducers})
   ],
   providers: [],
   bootstrap: [AppComponent]
