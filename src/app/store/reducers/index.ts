@@ -7,13 +7,16 @@ import {
 } from '@ngrx/store';
 
 import * as fromVideos from './videos';
+import * as fromAuth from './auth';
 
 export interface State {
   videos: fromVideos.State;
+  auth: fromAuth.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  videos: fromVideos.reducer
+  videos: fromVideos.reducer,
+  auth: fromAuth.reducer
 };
 
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
@@ -27,6 +30,13 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
 export const metaReducers: MetaReducer<State>[] = [logger];
 
 export const getVideoState = createFeatureSelector<fromVideos.State>('videos');
+
+export const getAuthState = createFeatureSelector<fromAuth.State>('auth');
+
+export const getIsAuth = createSelector(
+  getAuthState,
+  fromAuth.getAuthState
+);
 
 export const getIds = createSelector(
   getVideoState,

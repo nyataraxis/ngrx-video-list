@@ -1,13 +1,16 @@
 <main class="container">
+  <app-login-button
+    [auth]="auth$ | async"
+    (login)="loginTrigger()"
+    (logout)="logoutTrigger()"
+  ></app-login-button>
   <app-video-list
     [videos]="videos$ | async"
     [label]="'Список видео'"
-    (select)="onSelect($event)">
+    (select)="onSelect($event)"
+  >
   </app-video-list>
-  <app-video-selected [video]="selected$ | async">
-  </app-video-selected>
-  <app-movie-list
-    [movies]="movies$ | async"
-    [label]="'Список видео'">
+  <app-video-selected [video]="selected$ | async"> </app-video-selected>
+  <app-movie-list [movies]="movies$ | async" [label]="'Список видео'">
   </app-movie-list>
 </main>

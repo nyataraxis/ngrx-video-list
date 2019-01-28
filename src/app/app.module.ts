@@ -13,6 +13,8 @@ import { VideosEffects } from './store/effects/videos.effect';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
+import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { AuthEffects } from './store/effects/auth';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,15 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
     VideoItemComponent,
     VideoSelectedComponent,
     MovieListComponent,
-    MovieItemComponent
+    MovieItemComponent,
+    LoginButtonComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers, {metaReducers}),
-    EffectsModule.forRoot([VideosEffects])
+    EffectsModule.forRoot([VideosEffects, AuthEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
