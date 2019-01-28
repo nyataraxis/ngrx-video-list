@@ -1,9 +1,13 @@
 <main class="container">
-  <app-video-list 
+  <app-video-list
     [videos]="videos$ | async"
     [label]="'Список видео'"
     (select)="onSelect($event)">
   </app-video-list>
   <app-video-selected [video]="selected$ | async">
   </app-video-selected>
+  <app-movie-list
+    [movies]="movies$ | async"
+    [label]="'Список видео'">
+  </app-movie-list>
 </main>

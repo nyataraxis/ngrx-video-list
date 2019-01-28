@@ -8,18 +8,27 @@ import { VideoListComponent } from './components/video-list/video-list.component
 import { VideoItemComponent } from './components/video-item/video-item.component';
 import { VideoSelectedComponent } from './components/video-selected/video-selected.component';
 import { reducers, metaReducers } from './store/reducers/index';
+import { EffectsModule } from '@ngrx/effects';
+import { VideosEffects } from './store/effects/videos.effect';
+import { HttpClientModule } from '@angular/common/http';
+import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { MovieItemComponent } from './components/movie-item/movie-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VideoListComponent,
     VideoItemComponent,
-    VideoSelectedComponent
+    VideoSelectedComponent,
+    MovieListComponent,
+    MovieItemComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(reducers, {metaReducers})
+    StoreModule.forRoot(reducers, {metaReducers}),
+    EffectsModule.forRoot([VideosEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

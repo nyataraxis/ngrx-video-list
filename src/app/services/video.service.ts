@@ -3,20 +3,20 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import 'rxjs/add/observable/throw';
+import { throwError } from 'rxjs';
 
-import { Video } from '../models';
+import { Movie, MovieList } from '../models';
 
-const videosLink = '';
+const videosLink = 'https://raw.githubusercontent.com/nyataraxis/ngrx-video-list/master/src/files/vods.json';
 @Injectable({
     providedIn: 'root'
 })
 export class VideoService {
     constructor(private http: HttpClient) { }
 
-    getVideos(): Observable<Video[]> {
+    getVideos(): Observable<MovieList> {
         return this.http
-            .get<Video[]>(videosLink)
-            .pipe(catchError((error: any) => Observable.throw(error.json())));
+            .get<MovieList>(videosLink)
+            .pipe(catchError((error: any) => throwError(error.json())));
     }
 }
