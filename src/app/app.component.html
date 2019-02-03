@@ -11,6 +11,12 @@
   >
   </app-video-list>
   <app-video-selected [video]="selected$ | async"> </app-video-selected>
-  <app-movie-list [movies]="movies$ | async" [label]="'Список видео'">
+  <app-movie-list
+    [movies]="movies$ | async"
+    [label]="'Список видео'"
+    (select)="onSelect($event)"
+  >
   </app-movie-list>
+  <app-movie-selected [movie]="selectedMovie$ | async"> </app-movie-selected>
+
 </main>

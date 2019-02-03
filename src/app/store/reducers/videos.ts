@@ -1,12 +1,13 @@
 import * as videoAction from '../actions/videos';
 
-import { Video, Movie } from '../../models';
+import { Video, Movie, MovieDetails } from '../../models';
 
 export interface State {
   ids: number[];
   videos: { [id: number]: Video };
   selected: number;
-  movies: Movie[];
+  movies: { [ID: number]: Movie };
+  moviesDetailed: { [ID: number]: MovieDetails };
 }
 
 export const initialState: State = {
@@ -37,7 +38,8 @@ export const initialState: State = {
     }
   },
   selected: null,
-  movies: []
+  movies: [],
+  moviesDetailed: {}
 };
 
 export function reducer(state = initialState, action: videoAction.Action) {
@@ -55,6 +57,14 @@ export function reducer(state = initialState, action: videoAction.Action) {
       return {
         ...state,
         selected: id
+      };
+    }
+    case videoAction.SELECT_SUCCESS: {
+      const movieDetails = action.payload;
+      console.log(movieDetails);
+      return {
+        ...state,
+        moviesDetailed: { ...state.moviesDetailed, [movieDetails.ID]: movieDetails }
       };
     }
     case videoAction.LOAD_VIDEOS: {
@@ -75,5 +85,6 @@ export function reducer(state = initialState, action: videoAction.Action) {
 
 export const getIds = (state: State) => state.ids;
 export const getVideos = (state: State) => state.videos;
+export const getDetailedMovies = (state: State) => state.moviesDetailed;
 export const getSelected = (state: State) => state.selected;
 export const getLoadedMovies = (state: State) => state.movies;

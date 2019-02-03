@@ -4,7 +4,7 @@ import { Movie } from '../../models';
 
 @Component({
   selector: 'app-movie-item',
-  template: `<li>{{movie.name}}</li>`,
+  template: `<li (click)="select.emit(movie.ID)">{{movie.name}}</li>`,
   styles: []
 })
 

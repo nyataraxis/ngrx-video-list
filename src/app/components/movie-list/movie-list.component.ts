@@ -8,7 +8,7 @@ import { Movie } from '../../models';
       <h2>{{label}}</h2>
       <app-movie-item *ngFor="let movie of movies"
       [movie]="movie"
-      >
+      (select)="select.emit($event)">
       </app-movie-item>
     </div>
   `,

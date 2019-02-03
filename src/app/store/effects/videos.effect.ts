@@ -23,4 +23,15 @@ export class VideosEffects {
       );
     })
   );
+  @Effect()
+  loadMovie$ = this.actions$.pipe(
+    ofType<videoActions.Select>(videoActions.SELECT),
+    switchMap(action => {
+      console.log(action.payload);
+      return this.videoService.getVideo(action.payload).pipe(
+        map(movie => new videoActions.SelectSuccess(movie.VODDetail)),
+        catchError(error => of(new videoActions.LoadVideosFail(error)))
+      );
+    })
+  );
 }

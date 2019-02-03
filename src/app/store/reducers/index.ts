@@ -48,6 +48,11 @@ export const getVideos = createSelector(
   fromVideos.getVideos
 );
 
+export const getDetailedMovies = createSelector(
+  getVideoState,
+  fromVideos.getDetailedMovies
+);
+
 export const getSelected = createSelector(
   getVideoState,
   fromVideos.getSelected
@@ -62,7 +67,15 @@ export const getSelectedVideo = createSelector(
     };
   }
 );
-
+export const getSelectedMovie = createSelector(
+  getSelected,
+  getDetailedMovies,
+  (selectedId, moviesDetailed) => {
+    return {
+      ...moviesDetailed[selectedId]
+    };
+  }
+);
 export const getAllVideos = createSelector(
   getIds,
   getVideos,

@@ -16,6 +16,7 @@ import * as authAction from './store/actions/auth';
 export class AppComponent implements OnInit {
   videos$: Observable<Video[]>;
   selected$: Observable<any>;
+  selectedMovie$: Observable<any>;
 
   movies$: Observable<any>;
   auth$: Observable<any>;
@@ -25,6 +26,8 @@ export class AppComponent implements OnInit {
     this.selected$ = store.select(fromRoot.getSelectedVideo);
     this.movies$ = store.select(fromRoot.getMovies);
     this.auth$ = store.select(fromRoot.getIsAuth);
+    this.selectedMovie$ = store.select(fromRoot.getSelectedMovie);
+    this.selectedMovie$.subscribe(value => { console.log(value); });
   }
 
   ngOnInit() {
@@ -40,6 +43,7 @@ export class AppComponent implements OnInit {
     console.log(localStorage.getItem('loggedIn'));
   }
   onSelect(id: number) {
+    console.log(['selected', id]);
     this.store.dispatch(new videoAction.Select(id));
   }
 }
