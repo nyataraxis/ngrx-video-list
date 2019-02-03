@@ -14,9 +14,7 @@ import * as authAction from './store/actions/auth';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  selected$: Observable<any>;
   selectedMovie$: Observable<any>;
-
   movies$: Observable<any>;
   auth$: Observable<any>;
   title = 'ngrx-video-list';
@@ -24,7 +22,6 @@ export class AppComponent implements OnInit {
     this.movies$ = store.select(fromRoot.getMovies);
     this.auth$ = store.select(fromRoot.getIsAuth);
     this.selectedMovie$ = store.select(fromRoot.getSelectedMovie);
-    this.selectedMovie$.subscribe(value => { console.log(value); });
   }
 
   ngOnInit() {
@@ -33,14 +30,11 @@ export class AppComponent implements OnInit {
 
   loginTrigger() {
     this.store.dispatch(new authAction.Login());
-    console.log(localStorage.getItem('loggedIn'));
   }
   logoutTrigger() {
     this.store.dispatch(new authAction.Logout());
-    console.log(localStorage.getItem('loggedIn'));
   }
   onSelect(id: number) {
-    console.log(['selected', id]);
     this.store.dispatch(new videoAction.Select(id));
   }
 }

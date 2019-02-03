@@ -26,7 +26,6 @@ export function reducer(state = initialState, action: videoAction.Action) {
     }
     case videoAction.SELECT_SUCCESS: {
       const movieDetails = action.payload;
-      console.log(movieDetails);
       return {
         ...state,
         moviesDetailed: { ...state.moviesDetailed, [movieDetails.ID]: movieDetails }
