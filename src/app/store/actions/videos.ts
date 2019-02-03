@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Video, Movie, MovieList, MovieDetails } from '../../models';
+import { Movie, MovieList, MovieDetails } from '../../models';
 
 export const SELECT = '[Videos] Select';
 export const SELECT_SUCCESS = '[Videos] Select Success';
@@ -29,14 +29,10 @@ export class Select implements Action {
   constructor(public payload: number) { }
 }
 
-export class AddOne implements Action {
-  readonly type = ADD_ONE;
-  constructor(public payload: Video) { }
-}
 
 export class SelectSuccess implements Action {
   readonly type = SELECT_SUCCESS;
   constructor(public payload: MovieDetails) { }
 }
 
-export type Action = AddOne | Select | LoadVideos | LoadVideosSuccess | LoadVideosFail | SelectSuccess;
+export type Action =  Select | LoadVideos | LoadVideosSuccess | LoadVideosFail | SelectSuccess;

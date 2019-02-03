@@ -1,6 +1,6 @@
 import * as videoAction from '../actions/videos';
 
-import { Video, Movie, MovieDetails } from '../../models';
+import { Movie, MovieDetails } from '../../models';
 
 export interface State {
   selected: number;

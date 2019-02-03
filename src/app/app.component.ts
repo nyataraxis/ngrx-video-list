@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Video, Movie } from './models';
+import { Movie } from './models';
 import { Store } from '@ngrx/store';
 
 import * as fromRoot from './store/reducers';
@@ -14,7 +14,6 @@ import * as authAction from './store/actions/auth';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  videos$: Observable<Video[]>;
   selected$: Observable<any>;
   selectedMovie$: Observable<any>;
 
