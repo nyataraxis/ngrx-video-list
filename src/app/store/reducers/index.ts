@@ -38,15 +38,7 @@ export const getIsAuth = createSelector(
   fromAuth.getAuthState
 );
 
-export const getIds = createSelector(
-  getVideoState,
-  fromVideos.getIds
-);
 
-export const getVideos = createSelector(
-  getVideoState,
-  fromVideos.getVideos
-);
 
 export const getDetailedMovies = createSelector(
   getVideoState,
@@ -58,15 +50,6 @@ export const getSelected = createSelector(
   fromVideos.getSelected
 );
 
-export const getSelectedVideo = createSelector(
-  getSelected,
-  getVideos,
-  (selectedId, videos) => {
-    return {
-      ...videos[selectedId]
-    };
-  }
-);
 export const getSelectedMovie = createSelector(
   getSelected,
   getDetailedMovies,
@@ -76,13 +59,7 @@ export const getSelectedMovie = createSelector(
     };
   }
 );
-export const getAllVideos = createSelector(
-  getIds,
-  getVideos,
-  (ids, videos) => {
-    return ids.map(id => videos[id]);
-  }
-);
+
 
 export const getMovies = createSelector(
   getVideoState,

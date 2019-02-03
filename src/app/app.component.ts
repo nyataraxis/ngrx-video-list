@@ -22,8 +22,6 @@ export class AppComponent implements OnInit {
   auth$: Observable<any>;
   title = 'ngrx-video-list';
   constructor(private store: Store<fromRoot.State>) {
-    this.videos$ = store.select(fromRoot.getAllVideos);
-    this.selected$ = store.select(fromRoot.getSelectedVideo);
     this.movies$ = store.select(fromRoot.getMovies);
     this.auth$ = store.select(fromRoot.getIsAuth);
     this.selectedMovie$ = store.select(fromRoot.getSelectedMovie);
